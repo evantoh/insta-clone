@@ -21,7 +21,7 @@
       </div>
       <!-- search form end -->
       <div class="col-sm-6 col-md-6">
-        {% if user.is_authenticated %}
+        {% comment %} {% if user.is_authenticated %} {% endcomment %}
         <ul>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
@@ -29,7 +29,7 @@
                   </a>
             <ul class="dropdown-menu" role="menu">
               <li>
-                <a href="{%url 'newsToday'%}">Home</a>
+                <a href="">Home</a>
               </li>
               <li>
                 <a href="/accounts/password/change">Change Password</a>
@@ -40,12 +40,12 @@
             </ul>
           </li>
         </ul>
-        {% else %}
+        {% comment %} {% else %} {% endcomment %}
         <li>
           <a class='btn btn-default' href="/accounts/login">Login</a>
         </li>
 
-        {% endif %}
+        {% comment %} {% endif %} {% endcomment %}
       </div>
     </div>
   </nav>
