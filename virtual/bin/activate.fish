@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/evans/python-projects/Django-projects/inta-clone/virtual"
+set -gx VIRTUAL_ENV "/home/evans/python-projects/Django-projects/instagram-clone/virtual"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
