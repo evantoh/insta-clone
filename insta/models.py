@@ -18,12 +18,12 @@ class image(models.Model):
     image_name=models.CharField(max_length =60)
     image_caption=models.TextField()
     profile=models.ForeignKey(profile)
-    # comments=models.ForeignKey(comments)
+    # comments=models.ForeignKey(comment)
     likes=models.IntegerField(default=0)
 
 # create class comments
 
-class Comments(models.Model):
+class comment(models.Model):
     comment = models.CharField(max_length=300)
     user = models.ForeignKey(User, null=True)
     image = models.ForeignKey(image, null=True)

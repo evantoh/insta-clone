@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import image
 
 # Create your views here.
 def welcome(request):
@@ -16,3 +17,8 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'all-news/search.html',{"message":message})
+def display_image(request):
+    images=image.objects.all()
+
+    return render(request,'display_image.html',{"images":images})
+    
