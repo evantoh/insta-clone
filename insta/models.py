@@ -25,13 +25,21 @@ class profile(models.Model):
 
 # create class image
 class image(models.Model):
-    image=models.ImageField(upload_to='pics/')
-    image_name=models.CharField(max_length =60)
-    image_caption=models.TextField()
-    profile=models.ForeignKey(profile)
+    image=models.ImageField(upload_to='pics/',null=True)
+    image_name=models.CharField(max_length =60,null=True)
+    image_caption=models.TextField(null=True)
+    profile=models.ForeignKey(profile,null=True)
     # comments=models.ForeignKey(comment)
     likes=models.IntegerField(default=0)
+    time_uploaded=models.DateTimeField(auto_now_add=True,null=True)
+    user=models.ForeignKey(User,null=True)
 
+    # create class to order the images 
+    class Meta:
+         ordering=['-time_uploaded']
+    # method to save image class objects
+    def save_images(self):
+        self.save
 # create class comments
 
 class comment(models.Model):
@@ -39,6 +47,7 @@ class comment(models.Model):
     user = models.ForeignKey(User, null=True)
     image = models.ForeignKey(image, null=True)
     time_comment = models.DateTimeField(auto_now_add=True, null=True)
+   
 # clss that orders comment according to the time commented
     class Meta:
        ordering = ['-time_comment']
