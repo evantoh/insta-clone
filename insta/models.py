@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-# create class profile 
+# create model profile 
 class profile(models.Model):
     profile_photo=models.ImageField(upload_to = 'profile/')
     bio=models.TextField()
@@ -20,10 +20,10 @@ class profile(models.Model):
         return self.user.username
 # test save method in profile
     def save_profile(self):
-        self.sve()
+        self.save()
 
 
-# create class image
+# create model image
 class image(models.Model):
     image=models.ImageField(upload_to='pics/',null=True)
     image_name=models.CharField(max_length =60,null=True)
@@ -37,6 +37,7 @@ class image(models.Model):
     # create class to order the images 
     class Meta:
          ordering=['-time_uploaded']
+         
     # method to save image class objects
     def save_images(self):
         self.save

@@ -4,8 +4,14 @@ from .models import image,profile
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-def welcome(request):
-    return HttpResponse('welcome to kkjkrj')
+# function that returns the images and profile according to the last time updated
+def user_timelines(request):
+    current_user=request.user
+    images=image.objects.order_by('-time_uploaded')
+    profiles=profile.objects.order_by('-last_updates')
+    return render(request,'user_timelines.html',{"images":images,"profiles":profiles})
+    
+  
 def search_results(request):
     
     if 'username' in request.GET and request.GET["username"]:
@@ -20,7 +26,7 @@ def search_results(request):
         return render(request, 'all-news/search.html',{"message":message})
 
 #create view to handle thre profile
-@login_required(login_url='/accounts/login/')
+# @login_required(login_url='/accounts/login/')
 def my_profile(request):
     current_user=request.user
     my_photos=profile.objects.get(user_id=current_user)
