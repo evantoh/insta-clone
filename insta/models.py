@@ -10,6 +10,17 @@ class profile(models.Model):
     profile_photo=models.ImageField(upload_to = 'profile/')
     bio=models.TextField()
     user=models.ForeignKey(User)
+    last_updates=models.DateTimeField(auto_now_add=True,null=True)
+
+# order the profile objects according to when the updates
+    class Meta:
+        ordering =['-last_updates']
+
+    def __str__(self):
+        return self.user.username
+# test save method in profile
+    def save_profile(self):
+        self.sve()
 
 
 # create class image

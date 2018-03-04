@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import image
+from .models import image,profile
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def welcome(request):
@@ -17,8 +18,11 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'all-news/search.html',{"message":message})
-def display_image(request):
-    images=image.objects.all()
 
-    return render(request,'display_image.html',{"images":images})
-    
+#create view to handle thre profile
+@login_required(login_url='/accounts/login/')
+def my_profile(request):
+    current_user=request.user
+    my_photos=profile.objects.get(user_id=current_user)
+    images=image.objects.all().filter(profile_id=current_user.id)
+    return render(request,'profile.html',{"my_photos":my_photos,"images":images})
