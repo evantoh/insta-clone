@@ -4,7 +4,7 @@ from .models import image,profile
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-# function that returns the images and profile according to the last time updated
+# function that returns the images and profile according to the last time updated to the user logged in
 def user_timelines(request):
     current_user=request.user
     images=image.objects.order_by('-time_uploaded')
