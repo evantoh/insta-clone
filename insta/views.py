@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Image,Profile
+from .models import Image,Profile,Comment
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -9,7 +9,13 @@ def user_timelines(request):
     current_user=request.user
     images=Image.objects.order_by('-time_uploaded')
     profiles=Profile.objects.order_by('-last_updates')
-    return render(request,'user_timelines.html',{"images":images,"profiles":profiles})
+    comments=Comment.objects.order_by('-time_comment')
+    return render(request,'user_timelines.html',{"images":images,"profiles":profiles,"comments":comments})
+
+# getting the single image
+def single_image(request,photo_id):
+    photos = Image.objects.get(id = photo_id)
+    return render(request,"single_image.html", {"photos":photos})
     
   
 def search_results(request):

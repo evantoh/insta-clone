@@ -3,13 +3,28 @@
 
   <div class="style-image">
     {% for image in images %}
-    <div class="container-fluid">
-             
-          <img src="{{image.image.url}}" alt="Image">     
+    <a href="{% url 'single_photo' image.id %}"></a>
+    <div class="container-image" style="margin-left:40%;">
+       
+       <img src="{{image.image.url}}" alt="Image">
+         
             <h1>  {{image.image_name}}</h1>
     </div>
-    </a>
+    
     {% endfor %}
   </div>
 </section>
+<section class="no-touch">
+
+    <div class="style-image">
+      {% for profile in profiles %}
+      <div class="container-image" style="margin-left:40%;">
+               
+            <p>{{profile.bio}}</p>     
+  
+      </div>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
 {% endblock %}
