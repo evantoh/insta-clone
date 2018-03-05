@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 # create model profile 
-class profile(models.Model):
+class Profile(models.Model):
     profile_photo=models.ImageField(upload_to = 'profile/')
     bio=models.TextField()
     user=models.ForeignKey(User)
@@ -24,11 +24,11 @@ class profile(models.Model):
 
 
 # create model image
-class image(models.Model):
+class Image(models.Model):
     image=models.ImageField(upload_to='pics/',null=True)
     image_name=models.CharField(max_length =60,null=True)
     image_caption=models.TextField(null=True)
-    profile=models.ForeignKey(profile,null=True)
+    profile=models.ForeignKey(Profile,null=True)
     # comments=models.ForeignKey(comment)
     likes=models.IntegerField(default=0)
     time_uploaded=models.DateTimeField(auto_now_add=True,null=True)
@@ -37,16 +37,16 @@ class image(models.Model):
     # create class to order the images 
     class Meta:
          ordering=['-time_uploaded']
-         
+
     # method to save image class objects
     def save_images(self):
         self.save
 # create class comments
 
-class comment(models.Model):
+class Comment(models.Model):
     comment = models.CharField(max_length=300)
     user = models.ForeignKey(User, null=True)
-    image = models.ForeignKey(image, null=True)
+    image = models.ForeignKey(Image, null=True)
     time_comment = models.DateTimeField(auto_now_add=True, null=True)
    
 # clss that orders comment according to the time commented
