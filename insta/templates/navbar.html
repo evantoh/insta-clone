@@ -14,48 +14,28 @@
 </head>
 
 <body>
+ <nav class="navbar navbar-default navbar-fixed-top">
 
-
-    <nav class="navbar navbar-default navbar-fixed-top">
-
-
-        <div class="container-fluid">
-
-
-
-            <div class="navbar-header">
-
-                <a href="{% url 'user_timelines'%}" class="navbar-brand siteIcon" style=" margin-top: -4%;">
-                    <i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
-                </a>
-
-                <a href="{% url 'user_timelines'%}" class="navbar-brand siteName">
-                    <img src="{%static 'images/logo.png' %}" alt="Instagram Logo" class="img-responsive" style='height: 5vh; margin-top: -6%; margin-left: 30%;'>
-                </a>
-
-            </div>
-
-            <div class="navbar-right">
-                    <img src="{%static 'images/compass.png'%}" alt="" srcset="" style="vertical-align: middle; height: 5vh;padding: 5px 10px 0%; margin-top: 2.3%;">
-                </a>
-
-                <a href="/logout" class="userIcon">
-                    <img src="{%static 'images/logout.jpeg'%}" alt="" srcset=""  style="vertical-align: middle; height: 5vh;padding: 5px 10px 0%; margin-top: 2.3%;">
-                </a>
-  
-                <a href="/accounts/login" class="userIcon">
-                    <img src="{%static 'images/login.png'%}" alt="" srcset=""  style="vertical-align: middle; height: 5vh;padding: 5px 10px 0%; margin-top: 2.3%;">
-                </a>
-
-            </div>
-
-
-
+  <div class="container-fluid">
+   <div class="navbar-header">
+          <a href="{% url 'user_timelines'%}" class="navbar-brand siteIcon" style=" margin-top: -4%;">
+              <i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
+          </a>
+          <a href="{% url 'user_timelines'%}" class="navbar-brand siteName">
+              <img src="{%static 'images/logo.png' %}" alt="Instagram Logo" class="img-responsive" style='height: 5vh; margin-top: -6%; margin-left: 30%;'>
+          </a>
+      </div>
+      <div class="navbar-right">
+              <img src="{%static 'images/compass.png'%}" alt="" srcset="" style="vertical-align: middle; height: 5vh;padding: 5px 10px 0%; margin-top: 2.3%;">
+          </a>
+          <a href="/logout" class="userIcon">
+              <img src="{%static 'images/logout.jpeg'%}" alt="" srcset=""  style="vertical-align: middle; height: 5vh;padding: 5px 10px 0%; margin-top: 2.3%;">
+          </a>
+          <a href="/accounts/login" class="userIcon">
+              <img src="{%static 'images/login.png'%}" alt="" srcset=""  style="vertical-align: middle; height: 5vh;padding: 5px 10px 0%; margin-top: 2.3%;">
+          </a>
+      </div>
         </div>
-
     </nav>
-
-
 </body>
-
 </html>
