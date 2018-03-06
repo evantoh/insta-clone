@@ -1,25 +1,61 @@
+{% load bootstrap3 %} {% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
 
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="">The logo here</a>
-      </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Adding a search form  -->
-      <div class="col-sm-4 col-md-4 navbar-right">
+    <!-- Styles block -->
+    {% block styles %} {% bootstrap_css %}
+    <script src="https://use.fontawesome.com/80caa23151.js"></script>
 
-        <form class="navbar-form" role="search" action="">
+    {% endblock %}
+</head>
 
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search here" name="article">
-            <div class="input-group-btn">
-              <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+<body>
+
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+
+
+        <div class="container-fluid">
+
+
+
+            <div class="navbar-header">
+
+                <a href="{% url 'user_timelines'%}" class="navbar-brand siteIcon" style=" margin-top: -4%;">
+                    <i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
+                </a>
+
+                <a href="{% url 'user_timelines'%}" class="navbar-brand siteName">
+                    <img src="{%static 'images/logo.png' %}" alt="Instagram Logo" class="img-responsive" style='height: 5vh; margin-top: -6%; margin-left: 30%;'>
+                </a>
+
             </div>
-          </div>
 
-        </form>
-      </div>
-      <!-- search form end -->
-      
-    </div>
-  </nav>
+            <div class="navbar-right">
+                    <img src="{%static 'images/compass.png'%}" alt="" srcset="" style="vertical-align: middle; height: 5vh;padding: 5px 10px 0%; margin-top: 2.3%;">
+                </a>
+
+                <a href="/logout" class="userIcon">
+                    <img src="{%static 'images/logout.jpeg'%}" alt="" srcset=""  style="vertical-align: middle; height: 5vh;padding: 5px 10px 0%; margin-top: 2.3%;">
+                </a>
+  
+                <a href="/accounts/login" class="userIcon">
+                    <img src="{%static 'images/login.png'%}" alt="" srcset=""  style="vertical-align: middle; height: 5vh;padding: 5px 10px 0%; margin-top: 2.3%;">
+                </a>
+
+            </div>
+
+
+
+        </div>
+
+    </nav>
+
+
+</body>
+
+</html>
