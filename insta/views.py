@@ -13,8 +13,8 @@ def user_timelines(request):
     return render(request,'user_timelines.html',{"images":images,"profiles":profiles,"comments":comments})
 
 # getting the single image
-def single_image(request,photo_id):
-    photos = Image.objects.get(id = photo_id)
+def single_image(request,image_id):
+    photos = Image.objects.get(id = image_id)
     return render(request,"single_image.html", {"photos":photos})
     
   

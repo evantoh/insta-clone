@@ -1,15 +1,12 @@
 {% extends 'registration/base.html' %} {% block content %}
 <section class="no-touch">
 
-  <div class="style-image">
+  <div class="style-image" style="margin-left:40%;">
     {% for image in images %}
-    <a href="{% url 'single_photo' image.id %}"></a>
-    <div class="container-image" style="margin-left:40%;">
-       
-       <img src="{{image.image.url}}" alt="Image">
-         
-            <h1>  {{image.image_name}}</h1>
-    </div>
+    <a href="{% url 'single_photo' image.id %}"><img src="{{image.image.url}}" alt="Image"></a>
+    <h1>  {{image.image_name}}</h1>
+    
+  
     
     {% endfor %}
   </div>
