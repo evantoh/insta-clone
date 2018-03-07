@@ -35,6 +35,6 @@ def search_results(request):
 # @login_required(login_url='/accounts/login/')
 def my_profile(request):
     current_user=request.user
-    my_photos=profile.objects.get(user_id=current_user)
-    images=image.objects.all().filter(profile_id=current_user.id)
+    my_photos=Profile.objects.get(user_id=current_user)
+    
     return render(request,'profile.html',{"my_photos":my_photos,"images":images})
