@@ -29,7 +29,7 @@ class Image(models.Model):
     image_name=models.CharField(max_length =60,null=True)
     image_caption=models.TextField(null=True)
     profile=models.ForeignKey(Profile,null=True)
-    # comments=models.ForeignKey(comment)
+    # comments=models.ForeignKey(Comment)
     likes=models.IntegerField(default=0)
     time_uploaded=models.DateTimeField(auto_now_add=True,null=True)
     user=models.ForeignKey(User,null=True)

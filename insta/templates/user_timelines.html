@@ -1,13 +1,10 @@
 {% extends 'registration/base.html' %} {% block content %}
 <section class="no-touch">
 
-  <div class="style-image" style="margin-left:40%;">
+  <div class="style-image" style="margin-left:30%;">
     {% for image in images %}
-    <a href="{% url 'single_photo' image.id %}"><img src="{{image.image.url}}" alt="Image"></a>
+    <a href="{% url 'single_photo' image.id %}"><img src="{{image.image.url}}" style="width:60%;height:60%; margin-top=20px;" alt="Image"></a>
     <h1>  {{image.image_name}}</h1>
-    
-  
-    
     {% endfor %}
   </div>
 </section>
@@ -16,12 +13,19 @@
     <div class="style-image">
       {% for profile in profiles %}
       <div class="container-image" style="margin-left:40%;">
-               
-            <p>{{profile.bio}}</p>     
-  
+               <p>{{profile.bio}}</p>     
       </div>
       </a>
       {% endfor %}
     </div>
   </section>
+  <div>
+    {% for comment in comments %}
+        <p style="margin-bottom:-1px"><span style=" margin-right:10px; font-weight:bolder; font-size:16px">{{comment.user}}</span>{{comment.comment}}</p>
+        {% endfor %}
+        <p style="font-size:12px;color:grey; margin-top:10px">{{image.time_uploaded|timesince|upper}} AGO</p>
+        <hr>
+      </div>
+  </div>
+  
 {% endblock %}
