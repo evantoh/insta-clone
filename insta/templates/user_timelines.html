@@ -8,7 +8,7 @@
     <a href="{% url 'single_photo' image.id %}"><img src="{{image.image.url}}" style="width:60%;height:60%; margin-top=20px;" alt="Image"></a>
    
 
-    <form action="">
+    <form action="comment/">
       <input type="submit" value="comment here" />
   </form>
     {% endfor %}

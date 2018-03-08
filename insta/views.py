@@ -69,7 +69,7 @@ def comment(request,id):
 
             comment.save()
 
-            return redirect(post_look,current_post.id)
+            return redirect(current_post.id)
 
     else:
 
