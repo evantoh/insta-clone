@@ -36,7 +36,6 @@ LOGIN_REDIRECT_URL ='/'
 
 INSTALLED_APPS = [
     'insta',
-    'tinymce',
     'bootstrap3',
     'django.contrib.admin',
     'django.contrib.auth',
