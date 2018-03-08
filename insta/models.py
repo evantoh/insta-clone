@@ -44,11 +44,17 @@ class Image(models.Model):
 # create class comments
 
 class Comment(models.Model):
-    comment = models.CharField(max_length=300)
-    user = models.ForeignKey(User, null=True)
-    image = models.ForeignKey(Image, null=True)
+    text=models.CharField(max_length =250,blank=True)
+    author = models.ForeignKey(User,  on_delete=models.CASCADE, blank=True,null=True)
+    # Image, on_delete=models.CASCADE, related_name='comments')
     time_comment = models.DateTimeField(auto_now_add=True, null=True)
    
 # clss that orders comment according to the time commented
     class Meta:
        ordering = ['-time_comment']
+
+    def save_comment(self):
+        self.save()
+
+    def __str__(self):
+        return self.text

@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import Image,Profile,Comment
 from django.contrib.auth.decorators import login_required
-
+# from .forms import CommentForm
 # Create your views here.
 # function that returns the images and profile according to the last time updated to the user logged in
 def user_timelines(request):
@@ -32,9 +32,16 @@ def search_results(request):
         return render(request, 'all-news/search.html',{"message":message})
 
 # create view to handle thre profile
-# @login_required(login_url='/accounts/login/')
-def my_profile(request):
+@login_required(login_url='/accounts/login/')
+def my_profile(request,user_id):
     current_user=request.user
     my_photos=Profile.objects.get(user_id=current_user)
     
-    return render(request,'profile.html',{"my_photos":my_photos,"images":images})
+    return render(request,'profile.html',{"my_photos":my_photos})
+
+
+def user_profile(request):
+    profile = Profile.objects.get(id=user_id)
+    images = Image.objects.all().filter(user_id=user_id)
+    return render(request, 'profile.html', {'profile':profile, 'images':images})
+

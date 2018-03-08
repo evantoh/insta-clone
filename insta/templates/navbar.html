@@ -25,7 +25,14 @@
               <img src="{%static 'images/logo.png' %}" alt="Instagram Logo" class="img-responsive" style='height: 5vh; margin-top: -6%; margin-left: 30%;'>
           </a>
       </div>
-      <div class="navbar-right">
+      <div style="margin-left:40%; margin-top:20px;">
+        <form class="form-inline my-2 my-lg-0" action="{% url 'search_results' %}">
+            <input class="form-control mr-sm-2" type="search" name="photos"  placeholder="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+      </div>
+      
+      <div class="navbar-right" style="padding-right:10px;padding-top:10px;">
               <img src="{%static 'images/compass.png'%}" alt="" srcset="" style="vertical-align: middle; height: 5vh;padding: 5px 10px 0%; margin-top: 2.3%;">
           </a>
           <a href="/logout" class="userIcon">

@@ -3,8 +3,14 @@
 
   <div class="style-image" style="margin-left:30%;">
     {% for image in images %}
+
+    <a href="profile/{{user_id}}"><h2>{{image.user}}</h2></a> 
     <a href="{% url 'single_photo' image.id %}"><img src="{{image.image.url}}" style="width:60%;height:60%; margin-top=20px;" alt="Image"></a>
-    <h1>  {{image.image_name}}</h1>
+   
+
+    <form action="">
+      <input type="submit" value="comment here" />
+  </form>
     {% endfor %}
   </div>
 </section>
