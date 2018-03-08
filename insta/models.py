@@ -72,8 +72,6 @@ class Post(models.Model):
 
     caption = models.TextField(blank=True)
 
-    tags = models.ManyToManyField(Tag, blank=True)
-
     def __str__(self):
         return self.user.username
 
@@ -82,7 +80,7 @@ class Post(models.Model):
         ordering = ['-post_date']
 
 
-   user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
 
@@ -91,8 +89,6 @@ class Post(models.Model):
     image = models.ImageField(upload_to="posts/")
 
     caption = models.TextField(blank=True)
-
-    tags = models.ManyToManyField(Tag, blank=True)
 
     def __str__(self):
         return self.user.username

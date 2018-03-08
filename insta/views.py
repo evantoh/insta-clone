@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404, redirect
 from django.http import HttpResponse
-from .models import Image,Profile,Comment,Like,Post
+from .models import Image,Profile,Comment,Post
 from django.contrib.auth.decorators import login_required
 from .forms import CommentForm
 from django.core.exceptions import ObjectDoesNotExist
@@ -80,22 +80,4 @@ def comment(request,id):
     return render(request,'comment.html', {"title":title,"form":form,"current_post":current_post})
 
 
-    def post_look(request,id):
-        '''
-    View function to display a single post, its comments and likes
-    '''
-    current_user = request.user
-    try:
-        current_post = Post.objects.get(id=id)
-
-        title = f'{current_post.user.username}'
-        comments = Comment.get_post_comments(id)
-
-        likes = Like.num_likes(id)
-
-        like = Like.objects.filter(post=id).filter(user=current_user)
-
-    except ObjectDoesNotExist:
-        raise Http404()
-
-    return render(request, 'post_look.html', {"title":title, "post":current_post,"comments":comments,"likes":likes,"like":like })
+    
