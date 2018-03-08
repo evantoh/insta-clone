@@ -58,3 +58,45 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text
+
+
+class Post(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+
+    post_date = models.DateTimeField(auto_now_add=True)
+
+    image = models.ImageField(upload_to="posts/")
+
+    caption = models.TextField(blank=True)
+
+    tags = models.ManyToManyField(Tag, blank=True)
+
+    def __str__(self):
+        return self.user.username
+
+    class Meta:
+
+        ordering = ['-post_date']
+
+
+   user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+
+    post_date = models.DateTimeField(auto_now_add=True)
+
+    image = models.ImageField(upload_to="posts/")
+
+    caption = models.TextField(blank=True)
+
+    tags = models.ManyToManyField(Tag, blank=True)
+
+    def __str__(self):
+        return self.user.username
+
+    class Meta:
+
+        ordering = ['-post_date']
