@@ -1,0 +1,19 @@
+{% extends "registration/base.html" %}
+
+{% block content %}
+  {{block.super}}
+  <div style="margin-top:20%;">
+        <a href="{{profile.get_absolute_url}}">{{profile.username}}</a>
+        {% for profile in profiles %}
+        {% if request.user != current_user %}
+        <div class="col-lg-2">
+          <a href="{{profile.get_absolute_url}}">{{profile.username}}</a>
+          <img src="{{profile.profile_photo.url}}" class="img-responsive card-image" alt=""></a>
+        </div>
+  </div>
+   
+
+    {% endif %}
+
+    {% endfor %}
+{%endblock%}

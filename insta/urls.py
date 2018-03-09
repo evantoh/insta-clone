@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^profile/(?P<id>\d+)/$', views.user_profile, name ='myProfile'),
     url(r'^image/(\d+)',views.single_image,name ='single_photo'),
     url( r'^comment(\d+)', views.comment, name="comment" ),
-    url(r'^insta_users/$', views.otherinstausers, name='otherinstausers'),
+    url(r'^insta_users/$', views.other_insta_users, name='otherinstausers'),
     
 ]
 if settings.DEBUG:
