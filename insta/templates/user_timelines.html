@@ -18,7 +18,7 @@
             <a href="{{profile.find_profile}}">
             <img src="{{profile.profile_photo.url}}" style="height:72px;
             width: 95px;border-radius: 80px;" alt="" style="border:pink">
-            <p>{{profile.timestamp | timesince}} ago</p></a>
+            <p>{{profile.last_updates | timesince}} ago</p></a>
     
             {% endfor %}
         </div>
