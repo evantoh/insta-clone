@@ -1,19 +1,23 @@
 {%extends "registration/base.html"%}
 {% block content %}
+
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-2">
     </div>
     <div class="col-sm-8" >
       <div class="profile" style="margin-top:30%;">
-        <img src="{{my_photos.profile_photo.url}}" alt="" style="height:150px;width:150px; border-radius:50%; float:left; margin-right:50px">
+          <title>{{image_id.username}}</title>
+        <img src="{{profile.profile_photo.url}}" alt="" style="height:150px;width:150px; border-radius:50%; float:left; margin-right:50px">
         <p style="font-weight:bold; font-size:35px">{{profile.user}}</p>
         <div class="">
-          <input type="text" name="" value="Edit Profile" class=" btn btn-default btn-block" style="display:inline-block; width:200px; font-size:20px">
+            <button type="button" class=" btn btn-default btn-block" style="display:inline-block; width:200px; font-size:20px">EDIT PROFILE</button>
+
           <i class="fa fa-cog" aria-hidden="true" style="font-size:30px; margin-left:10px"></i>
         </div>
         <br>
-        <p style="font-size:20px"><span><span style="font-weight:bolder"> </span>Posts</span> <span style="margin-left:20px"><span style="font-weight:bolder">1000 </span> Followers</span> <span style="margin-left:20px"> <span style="font-weight:bolder">4000 </span>Following</span></p>
+        <p style="font-size:20px"><span><span style="font-weight:bolder"> </span>12 Posts</span> <span style="margin-left:20px"><span style="font-weight:bolder">1000 </span> Followers</span> <span style="margin-left:20px"> <span style="font-weight:bolder">4000 </span>Following</span></p>
       </div>
     </div>
     <div class="col-sm-2">

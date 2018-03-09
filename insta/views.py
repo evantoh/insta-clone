@@ -75,5 +75,8 @@ def comment(request,id):
 
     return render(request,'comment.html', {"title":title,"form":form,"current_post":current_post})
 
+def otherinstausers(request):
+    photo_desc = Profile.objects.all()
+    return render(request, 'insta_users.html',{"profiles":photo_desc})
 
     
