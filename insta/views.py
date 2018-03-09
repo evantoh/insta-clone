@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404, redirect
 from django.http import HttpResponse
-from .models import Image,Profile,Comment,Post
+from .models import Image,Profile,Comment
 from django.contrib.auth.decorators import login_required
 from .forms import CommentForm
 from django.core.exceptions import ObjectDoesNotExist

@@ -27,9 +27,9 @@ class Profile(models.Model):
         return profile
 
     @classmethod
-      def find_profile(cls,search_term):
-            profiles = cls.objects.filter(user__username__icontains=search_term)
-            return profiles
+    def find_profile(cls,search_term):
+        profiles = cls.objects.filter(user__username__icontains=search_term)
+        return profiles
 # test save method in profile
     def save_profile(self):
         self.save()
@@ -83,7 +83,7 @@ class Image(models.Model):
 class Comment(models.Model):
     text=models.CharField(max_length =250,blank=True)
     author = models.ForeignKey(User,  on_delete=models.CASCADE, blank=True,null=True)
-    # Image, on_delete=models.CASCADE, related_name='comments')
+    pic = models.ForeignKey(Image,on_delete=models.CASCADE, related_name='comments',blank=True)
     time_comment = models.DateTimeField(auto_now_add=True, null=True)
    
 # clss that orders comment according to the time commented
@@ -93,43 +93,52 @@ class Comment(models.Model):
     def save_comment(self):
         self.save()
 
+    def delete_comment(self):
+        return self.delete()
+
     def __str__(self):
         return self.text
 
-
-class Post(models.Model):
-
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
-
-    post_date = models.DateTimeField(auto_now_add=True)
-
-    image = models.ImageField(upload_to="posts/")
-
-    caption = models.TextField(blank=True)
-
-    def __str__(self):
-        return self.user.username
-
-    class Meta:
-
-        ordering = ['-post_date']
+    @classmethod
+    def get_comments(cls):
+        comment=Comment.objects.all()
+        return comment
+        
 
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+# class Post(models.Model):
 
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    post_date = models.DateTimeField(auto_now_add=True)
+#     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
 
-    image = models.ImageField(upload_to="posts/")
+#     post_date = models.DateTimeField(auto_now_add=True)
 
-    caption = models.TextField(blank=True)
+#     image = models.ImageField(upload_to="posts/")
 
-    def __str__(self):
-        return self.user.username
+#     caption = models.TextField(blank=True)
 
-    class Meta:
+#     def __str__(self):
+#         return self.user.username
 
-        ordering = ['-post_date']
+#     class Meta:
+
+#         ordering = ['-post_date']
+
+
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+#     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+
+#     post_date = models.DateTimeField(auto_now_add=True)
+
+#     image = models.ImageField(upload_to="posts/")
+
+#     caption = models.TextField(blank=True)
+
+#     def __str__(self):
+#         return self.user.username
+
+#     class Meta:
+
+#         ordering = ['-post_date']
