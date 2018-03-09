@@ -8,7 +8,7 @@ urlpatterns = [
    
     url('^$',views.user_timelines, name='user_timelines'),
     url(r'^search/',views.search_users, name='search_users'),
-    url(r'^profile/(?P<user_id>\d+)/$', views.my_profile, name ='myProfile'),
+    url(r'^profile/(?P<id>\d+)/$', views.user_profile, name ='myProfile'),
     url(r'^image/(\d+)',views.single_image,name ='single_photo'),
     url( r'^comment(\d+)', views.comment, name="comment" ),
     

@@ -11,8 +11,10 @@ def user_timelines(request):
     current_user=request.user
     images=Image.objects.order_by('-time_uploaded')
     profiles=Profile.objects.order_by('-last_updates')
-    comments=Comment.objects.order_by('-time_comment')
-    return render(request,'user_timelines.html',{"images":images,"profiles":profiles,"comments":comments})
+    title ="INSTAGRAM CLONE"
+
+   
+    return render(request,'user_timelines.html',{"images":images,"profiles":profiles,"title":title})
 
 # getting the single image
 def single_image(request,image_id):
@@ -35,18 +37,10 @@ def search_users(request):
 
 
 
-# create view to handle thre profile
-@login_required(login_url='/accounts/login/')
-def my_profile(request,user_id):
-    current_user=request.user
-    my_photos=Profile.objects.get(user_id=current_user)
-    
-    return render(request,'profile.html',{"my_photos":my_photos})
 
-
-def user_profile(request):
-    profile = Profile.objects.get(id=user_id)
-    images = Image.objects.all().filter(user_id=user_id)
+def user_profile(request,id):
+    profile = Profile.objects.get(id=id)
+    images = Image.objects.all()
     return render(request, 'profile.html', {'profile':profile, 'images':images})
 
 
