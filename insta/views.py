@@ -1,5 +1,4 @@
 from django.shortcuts import render,get_object_or_404, redirect
-from django.http import HttpResponse
 from .models import Image,Profile,Comment
 from django.contrib.auth.decorators import login_required
 from .forms import CommentForm
@@ -79,4 +78,17 @@ def other_insta_users(request):
     photo_desc = Profile.objects.all()
     return render(request, 'all_temps/insta_users.html',{"profiles":photo_desc})
 
-    
+def edit_profile(request):
+    title = 'Instagram |Edit'
+    current_user = request.user
+    if request.method == 'POST':
+        form = EditProfile(request.POST,request.FILES)
+        if form.is_valid():
+            update = form.save(commit=False)
+            update.user = current_user
+            update.profile = current_profile
+            update.save()
+            return redirect('profile')
+    else:
+        form = EditProfile()
+    return render(request, 'all_temps/edit_profile.html', {"title":title, "form":form})
