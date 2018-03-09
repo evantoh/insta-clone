@@ -21,12 +21,22 @@ class Profile(models.Model):
     def search_by_username(cls,search_term):
         profiles = cls.objects.filter(user__username__icontains=search_term)
         return profiles
+    @classmethod
+    def get_profile(cls):
+        profile=Profile.objects.all()
+        return profile
+
+    @classmethod
+      def find_profile(cls,search_term):
+            profiles = cls.objects.filter(user__username__icontains=search_term)
+            return profiles
 # test save method in profile
     def save_profile(self):
         self.save()
 
-    def find_user_profile(self):
-        return reverse("profiles:user", kwargs={"id":self.user})
+    def delete_profile(self):
+        self.delete
+
 
 # create model image
 class Image(models.Model):
@@ -39,6 +49,9 @@ class Image(models.Model):
     time_uploaded=models.DateTimeField(auto_now_add=True,null=True)
     user=models.ForeignKey(User,null=True)
 
+    def __str__(self):
+        return self.image_name
+
     # create class to order the images 
     class Meta:
          ordering=['-time_uploaded']
@@ -46,6 +59,25 @@ class Image(models.Model):
     # method to save image class objects
     def save_images(self):
         self.save
+
+    def delete_image(self):
+        self.delete()
+
+    @classmethod
+    def get_image_by_id(cls,id): 
+        image = Image.objects.filter(id = Image.id)
+        return image
+
+    
+    @classmethod
+    def update_caption(cls,id,caption):
+        captions = Image.objects.filter(id=id).update(caption = caption)
+        return captions
+
+    @classmethod
+    def get_images(cls):
+        image = Image.objects.all()
+        return image
 # create class comments
 
 class Comment(models.Model):
