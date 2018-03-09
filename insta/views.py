@@ -43,36 +43,7 @@ def user_profile(request,id):
     return render(request, 'all_temps/profile.html', {'profile':profile, 'images':images})
 
 
-@login_required(login_url='/accounts/register')
-def comment(request,id):
 
-    current_user = request.user
-
-    current_post = Post.objects.get(id=id)
-
-    if request.method == 'POST':
-
-        form = CommentForm(request.POST)
-
-        if form.is_valid:
-
-            comment = form.save(commit=False)
-
-            comment.user = current_user
-
-            comment.post = current_post
-
-            comment.save()
-
-            return redirect(current_post.id)
-
-    else:
-
-        form = CommentForm()
-
-    title = f'Comment {current_post.user.username}'
-
-    return render(request,'all_temps/comment.html', {"title":title,"form":form,"current_post":current_post})
 
 def other_insta_users(request):
     photo_desc = Profile.objects.all()
@@ -92,3 +63,22 @@ def edit_profile(request):
     else:
         form = EditProfile()
     return render(request, 'all_temps/edit_profile.html', {"title":title, "form":form})
+
+
+@login_required(login_url='/accounts/login/')
+def post_comment(request, id):
+    title = 'Instagrum |Comment'
+    post = get_object_or_404(Image, id=id)
+    current_user = request.user
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            post_comment = form.save(commit=False)
+            post_comment.user = current_user
+            post_comment.pic = post
+            post_comment.save()
+            return redirect('index')
+    else:
+        form = CommentForm()
+        
+    return render(request,'all_temps/comments.html',{"title":title,"form":form})

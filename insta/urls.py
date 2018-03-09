@@ -10,7 +10,7 @@ urlpatterns = [
     url(r'^search/',views.search_users, name='search_users'),
     url(r'^profile/(?P<id>\d+)/$', views.user_profile, name ='myProfile'),
     url(r'^image/(\d+)',views.single_image,name ='single_photo'),
-    url( r'^comment(\d+)', views.comment, name="comment" ),
+    url(r'^post_comment(\d+)', views.post_comment, name="comment" ),
     url(r'^insta_users/$', views.other_insta_users, name='otherinstausers'),
     
 ]
