@@ -3,9 +3,6 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 # User = get_user_model()
 
-
-# Create your models here.
-
 # create model profile 
 class Profile(models.Model):
     profile_photo=models.ImageField(upload_to = 'profile/')

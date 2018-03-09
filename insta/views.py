@@ -21,22 +21,13 @@ def single_image(request,image_id):
     
   
 def search_users(request):
-    
     if 'username' in request.GET and request.GET["username"]:
         search_term = request.GET.get('username')
         searched_user = Profile.search_by_username(search_term)
-#     if search_term:
-#     searched_user = searched_user.filter(
-#     Q(username__icontains=search_term) |
-#     Q(bio__icontains=search_term) |
-#     Q(image_detail__icontains=search_term)).distinct()
 
-# context = {
-#     "search_user": searched_user,
-# }
         message = f"{search_term}"
 
-        return render(request, 'search.html',{"message":message,"users": searched_user})
+        return render(request, 'search.html',{"message":message,"profiles": searched_user})
 
     else:
         message = "You haven't searched for any term"
