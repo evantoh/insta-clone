@@ -14,12 +14,12 @@ def user_timelines(request):
     title ="INSTAGRAM CLONE"
 
    
-    return render(request,'user_timelines.html',{"images":images,"profiles":profiles,"title":title})
+    return render(request,'all_temps/user_timelines.html',{"images":images,"profiles":profiles,"title":title})
 
 # getting the single image
 def single_image(request,image_id):
     photos = Image.objects.get(id = image_id)
-    return render(request,"single_image.html", {"photos":photos})
+    return render(request,"all_temps/single_image.html", {"photos":photos})
     
   
 def search_users(request):
@@ -29,11 +29,11 @@ def search_users(request):
 
         message = f"{search_term}"
 
-        return render(request, 'search.html',{"message":message,"profiles": searched_user})
+        return render(request, 'all_temps/search.html',{"message":message,"profiles": searched_user})
 
     else:
         message = "You haven't searched for any term"
-        return render(request, 'search.html',{"message":message})
+        return render(request, 'all_temps/search.html',{"message":message})
 
 
 
@@ -41,7 +41,7 @@ def search_users(request):
 def user_profile(request,id):
     profile = Profile.objects.get(id=id)
     images = Image.objects.all()
-    return render(request, 'profile.html', {'profile':profile, 'images':images})
+    return render(request, 'all_temps/profile.html', {'profile':profile, 'images':images})
 
 
 @login_required(login_url='/accounts/register')
@@ -73,10 +73,10 @@ def comment(request,id):
 
     title = f'Comment {current_post.user.username}'
 
-    return render(request,'comment.html', {"title":title,"form":form,"current_post":current_post})
+    return render(request,'all_temps/comment.html', {"title":title,"form":form,"current_post":current_post})
 
 def other_insta_users(request):
     photo_desc = Profile.objects.all()
-    return render(request, 'insta_users.html',{"profiles":photo_desc})
+    return render(request, 'all_temps/insta_users.html',{"profiles":photo_desc})
 
     
