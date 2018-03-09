@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 # User = get_user_model()
 
@@ -18,10 +19,17 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+    @classmethod
+    def search_by_username(cls,search_term):
+        profiles = cls.objects.filter(user__username__icontains=search_term)
+        return profiles
 # test save method in profile
     def save_profile(self):
         self.save()
 
+    def find_user_profile(self):
+        return reverse("profiles:user", kwargs={"id":self.user})
 
 # create model image
 class Image(models.Model):

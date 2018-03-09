@@ -4,8 +4,8 @@
   <div class="style-image" style="margin-left:30%;">
     {% for image in images %}
 
-    <a href="profile/{{user_id}}"><h2>{{image.user}}</h2></a> 
-    <a href="{% url 'single_photo' image.id %}"><img src="{{image.image.url}}" style="width:60%;height:60%; margin-top=20px;" alt="Image"></a>
+    <a href="{{find_user_profile}}"><h2>{{image.user}}</h2></a> 
+    <a href=""><img src="{{image.image.url}}" style="width:60%;height:60%; margin-top=20px;" alt="Image"></a>
    
 
     <form action="comment/">

@@ -18,16 +18,16 @@
 
   <div class="container-fluid">
    <div class="navbar-header">
-          <a href="{% url 'user_timelines'%}" class="navbar-brand siteIcon" style=" margin-top: -4%;">
+          <a href="" class="navbar-brand siteIcon" style=" margin-top: -4%;">
               <i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
           </a>
-          <a href="{% url 'user_timelines'%}" class="navbar-brand siteName">
+          <a href="" class="navbar-brand siteName">
               <img src="{%static 'images/logo.png' %}" alt="Instagram Logo" class="img-responsive" style='height: 5vh; margin-top: -6%; margin-left: 30%;'>
           </a>
       </div>
       <div style="margin-left:40%; margin-top:20px;">
-        <form class="form-inline my-2 my-lg-0" action="{% url 'search_results' %}">
-            <input class="form-control mr-sm-2" type="search" name="photos"  placeholder="Search">
+        <form class="form-inline my-2 my-lg-0" action="{% url 'search_users' %}">
+            <input class="form-control mr-sm-2" type="search" name="username"  placeholder="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
       </div>
