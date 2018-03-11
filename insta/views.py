@@ -1,7 +1,7 @@
 from django.shortcuts import render,get_object_or_404, redirect
 from .models import Image,Profile,Comment
 from django.contrib.auth.decorators import login_required
-from .forms import CommentForm
+from .forms import CommentForm,UploadForm
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404, HttpResponse
 # Create your views here.
@@ -59,7 +59,7 @@ def upload(request):
                     return redirect('index')
             else:
                 form = UploadForm()
-        return render(request,'upload.html',{"user":current_user,"form":form})
+                return render(request,'all_temps/upload.html',{"user":current_user,"form":form})
     
 
 
@@ -98,7 +98,7 @@ def post_comment(request, pk):
             post_comment.user = current_user
             post_comment.pic = post
             post_comment.save()
-            return redirect('user_timelines')
+            return redirect('index')
     else:
         form = CommentForm()
         
