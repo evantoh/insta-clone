@@ -6,9 +6,12 @@
     </div>
     <div class="col-sm-8" >
       <div class="profile" style="margin-top:30%;">
-          <title>{{image_id.username}}</title>
-        <img src="{{profile.profile_photo.url}}" alt="" style="height:150px;width:150px; border-radius:50%; float:left; margin-right:50px">
-        <p style="font-weight:bold; font-size:35px">{{profile.user}}</p>
+          {% for profile in profiles%}
+          {% if profile.user.id == user.id%}
+          <div class="container"><img class="img-circle center-block" src="{{profile.profile_photo.url}}" width="140" height="140">
+          <h1 class="text-center">{{profile.user.username}} <button class="btn btn-default btn-primary follow-button" type="button">Follow </button></h1>
+          {% endif %}
+    {% endfor %}
         <div class="">
             <button type="button" class=" btn btn-default btn-block" style="display:inline-block; width:200px; font-size:20px">EDIT PROFILE</button>
 

@@ -6,6 +6,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404, HttpResponse
 # Create your views here.
 # function that returns the images and profile according to the last time updated to the user logged in
+@login_required(login_url='/accounts/login/')
 def index(request):
     current_user=request.user
     images=Image.objects.order_by('-time_uploaded')
@@ -22,6 +23,7 @@ def single_image(request,image_id):
     
   
 #   function to search users according to their usernames
+@login_required(login_url='/accounts/login/')
 def search_users(request):
     if 'username' in request.GET and request.GET["username"]:
         search_term = request.GET.get('username')
@@ -38,12 +40,14 @@ def search_users(request):
 
 
 # function to show images and profile of users
-def user_profile(request,id):
-    profile = Profile.objects.get(id=id)
-    images = Image.objects.all()
-    return render(request, 'all_temps/profile.html', {'profile':profile, 'images':images})
+@login_required(login_url='/accounts/login/')
+def profile(request):
+    current_user=request.user
+    profile = Profile.objects.get()
+    return render(request, 'all_temps/profile.html', {'profiles':profile, "user":current_user})
 
 # function to upload images
+@login_required(login_url='/accounts/login/')
 def upload(request):
     current_user = request.user         
     profiles = Profile.get_profile()
@@ -82,11 +86,13 @@ def edit_profile(request):
 
 
 # function for user stories
+@login_required(login_url='/accounts/login/')
 def other_insta_users(request):
     photo_desc = Profile.objects.all()
     return render(request, 'all_temps/insta_users.html',{"profiles":photo_desc})
 
 # function to edit the profile
+@login_required(login_url='/accounts/login/')
 def edit_profile(request):
     title = 'Instagram |Edit'
     current_user = request.user
@@ -103,7 +109,7 @@ def edit_profile(request):
     return render(request, 'all_temps/edit_profile.html', {"title":title, "form":form})
 
 # function for commenting
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def post_comment(request, pk):
     title = 'Instagrum |Comment'
     post = get_object_or_404(Image, pk=pk)
