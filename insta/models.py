@@ -57,7 +57,7 @@ class Image(models.Model):
          ordering=['-time_uploaded']
 
     # method to save image class objects
-    def save_images(self):
+    def save_image(self):
         self.save
 
     def delete_image(self):

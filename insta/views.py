@@ -1,7 +1,7 @@
 from django.shortcuts import render,get_object_or_404, redirect
 from .models import Image,Profile,Comment
 from django.contrib.auth.decorators import login_required
-from .forms import CommentForm,UploadForm
+from .forms import CommentForm,UploadForm,EditProfile
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404, HttpResponse
 # Create your views here.
@@ -60,6 +60,9 @@ def upload(request):
             else:
                 form = UploadForm()
                 return render(request,'all_temps/upload.html',{"user":current_user,"form":form})
+
+# function to edit profile
+
     
 
 
