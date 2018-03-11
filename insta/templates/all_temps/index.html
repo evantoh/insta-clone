@@ -5,6 +5,12 @@
           {% for image in images %}
           <a href="profile/{{image.id}}"><h2>{{image.user}}</h2></a> 
           <a href=""><img src="{{image.image.url}}" style="width:40%;height:40%; margin-top:20px;" alt="Image"></a>
+          <a href="{% url 'comment' pk=pic.pk %}" style="color:inherit;"><i class="fa fa-comment-o fa-2x ml-4"></i></a>
+          <div>{% for comment in pic.comments.all %}
+            <p><strong>{{comment.user}}</strong> {{comment.comments}}</p>
+    {% endfor %}
+</div>
+
           {% endfor %}  
         </div>
 

@@ -81,9 +81,9 @@ class Image(models.Model):
 # create class comments
 
 class Comment(models.Model):
-    text=models.CharField(max_length =250,blank=True)
+    comments=models.CharField(max_length =250,blank=True)
     author = models.ForeignKey(User,  on_delete=models.CASCADE, blank=True,null=True)
-    pic = models.ForeignKey(Image,on_delete=models.CASCADE, related_name='comments',blank=True)
+    pic = models.ForeignKey(Image,on_delete=models.CASCADE, related_name='comments',blank=True,null=True)
     time_comment = models.DateTimeField(auto_now_add=True, null=True)
    
 # clss that orders comment according to the time commented
@@ -105,40 +105,3 @@ class Comment(models.Model):
         return comment
         
 
-
-# class Post(models.Model):
-
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-
-#     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
-
-#     post_date = models.DateTimeField(auto_now_add=True)
-
-#     image = models.ImageField(upload_to="posts/")
-
-#     caption = models.TextField(blank=True)
-
-#     def __str__(self):
-#         return self.user.username
-
-#     class Meta:
-
-#         ordering = ['-post_date']
-
-
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-
-#     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
-
-#     post_date = models.DateTimeField(auto_now_add=True)
-
-#     image = models.ImageField(upload_to="posts/")
-
-#     caption = models.TextField(blank=True)
-
-#     def __str__(self):
-#         return self.user.username
-
-#     class Meta:
-
-#         ordering = ['-post_date']

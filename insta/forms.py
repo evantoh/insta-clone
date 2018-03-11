@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
-from .models import *
+from .models import Comment
 
 
 
@@ -10,8 +10,8 @@ from .models import *
 #         model = Post
 #         exclude = ['user','profile', 'post_date', 'tags']
 
-class CommentForm(forms.ModelForm):
 
-    class Meta:
-        model = Comment
-        exclude = ['user', 'post']
+class CommentForm(forms.ModelForm):
+      class Meta:
+            model = Comment
+            fields = ['comments',]
