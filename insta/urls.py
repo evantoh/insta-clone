@@ -7,6 +7,7 @@ from django.conf.urls.static import static
 urlpatterns = [
    
     url('^$',views.index, name='index'),
+    url(r'^user/(\d+)',views.user, name='singleuser'),
     url(r'^search/',views.search_users, name='search_users'),
     url(r'^profile/(?P<id>\d+)/$', views.profile, name ='myProfile'),
     url(r'^image/(\d+)',views.single_image,name ='single_photo'),

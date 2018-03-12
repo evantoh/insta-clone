@@ -9,12 +9,12 @@ from django.http import Http404, HttpResponse
 @login_required(login_url='/accounts/login/')
 def index(request):
     current_user=request.user
-    images=Image.objects.order_by('-time_uploaded')
+    latest_images=Image.objects.order_by('-time_uploaded')
     profiles=Profile.objects.order_by('-last_updates')
     title ="INSTAGRAM CLONE"
 
    
-    return render(request,'all_temps/index.html',{"images":images,"title":title})
+    return render(request,'all_temps/index.html',{"profiles":profiles,"latest_images":latest_images,"title":title})
 
 # getting the single image
 def single_image(request,image_id):
@@ -68,7 +68,6 @@ def upload(request):
 # function to edit profile
 @login_required(login_url='/accounts/login/')
 def edit_profile(request):
-    title = 'Instagram |Edit'
     current_user = request.user
     if request.method == 'POST':
         form = EditProfile(request.POST,request.FILES)
@@ -126,3 +125,16 @@ def post_comment(request, pk):
         form = CommentForm()
         
     return render(request,'all_temps/comment.html',{"title":title,"form":form})
+
+
+def user(request,user_id):
+    current_user = request.user
+    
+    try:
+        user=Profile.objects.get(id=user_id)
+        images=Image.objects.filter(user=request.user)
+        
+    except Image.DoesNotExist:
+        raise Http404()
+
+    return render(request,"all_temps/user.html",{"user":user,"images":images})        
