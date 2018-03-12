@@ -15,21 +15,17 @@
 
     {{block.super}}
 
-    <div class="container">    
-
-        <!-- Empty Div -->
+    <div class="container" style="margin-top:12%;">    
         <div class="col-md-2 col-lg-2">
-            
-        </div>
+            </div>
 
         <!-- Create Comment form -->
-
         <div class="col-md-8 col-lg-8">
 
             <form method="post">
                 {% csrf_token %}
 
-                {% bootstrap_form form comment_form %}
+                {% bootstrap_form form  %}
 
                 <input type="submit" class="btn btn-success btn-lg" value="Post">
 
