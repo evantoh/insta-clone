@@ -17,6 +17,7 @@ def index(request):
     return render(request,'all_temps/index.html',{"profiles":profiles,"latest_images":latest_images,"title":title})
 
 # getting the single image
+@login_required(login_url='/accounts/login/')
 def single_image(request,image_id):
     photos = Image.objects.get(id = image_id)
     return render(request,"all_temps/single_image.html", {"photos":photos})
@@ -126,7 +127,7 @@ def post_comment(request, pk):
         
     return render(request,'all_temps/comment.html',{"title":title,"form":form})
 
-
+@login_required(login_url='/accounts/login/')
 def user(request,user_id):
     current_user = request.user
     
