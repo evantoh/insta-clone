@@ -13,12 +13,14 @@
 
       <div class="style-image" style="margin-left:14%;">
           {% for image in latest_images %}
-          {% comment %} <a href="profile/{{image.id}}"><h2>{{image.user}}</h2></a>  {% endcomment %}
+          <a href="profile/{{image.id}}"><h2>{{image.user}}</h2></a> 
           <a href=""><img src="{{image.image.url}}" style="height: 360px;width: 565px;" alt="Image"/></a>
-          {% comment %} <a href="{% url 'comment' pk=pic.pk %}" style="color:inherit;"><i class="fa fa-comment-o fa-2x ml-4"></i></a> {% endcomment %}
+          {% comment %} <a href="{% url 'comment' pk=image.pk %}" style="color:inherit;">add a comment here<i class="fa fa-comment-o fa-2x ml-4"></i></a> {% endcomment %}
           <div>{% for comment in pic.comments.all %}
             <p><strong>{{comment.user}}</strong> {{comment.comments}}</p>
     {% endfor %}
+    <a href="{% url 'comment' pk=image.pk %}" style="color:inherit;">add a comment here<i class="fa fa-comment-o fa-2x ml-4"></i></a>
+
 </div>
 
           {% endfor %}  
