@@ -13,7 +13,6 @@
 
       <div class="style-image" style="margin-left:14%;">
           {% for image in latest_images %}
-          {% comment %} <a href="profile/{{image.id}}"><h2>{{image.user}}</h2></a>  {% endcomment %}
           <a href=""><img src="{{image.image.url}}" style="height: 360px;width: 565px;" alt="Image"/></a>
           <div>
             {% for comment in image.comments.all %}
