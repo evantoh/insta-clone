@@ -5,7 +5,7 @@
         <div class="col- mx-auto p-5" style="background-color:#ffffff; border: 1px solid #e6e6e6;margin-top:13%;">
                   <div class="profile p-4" style="white-space:nowrap">
                     <img src="{{profile.profile_pic.url}}" alt="" style="height:70px;width:70px; border-radius:50%; display:inline;">
-                    <p class="ml-2" style="display:inline; white-space:nowrap; font-size:25px;">Hi<strong> {{current_user}}</strong>. Welcome to Instagram</p>
+                    <p class="ml-2" style="display:inline; white-space:nowrap; font-size:25px;">Hi<strong> {{profile.user}}</strong>. Welcome to Instagram</p>
                     <button class="btn btn-primary ml-2"><a href="{% url 'upload' %}" style="display:inline; white-space:nowrap; color:#ffffff;">upload your Image<i class="fa fa-plus-square-o fa-lg ml-4"></i></a></button>
                     <hr>
                   </div>
@@ -13,19 +13,19 @@
 
       <div class="style-image" style="margin-left:14%;">
           {% for image in latest_images %}
-          <a href="profile/{{image.id}}"><h2>{{image.user}}</h2></a> 
+          {% comment %} <a href="profile/{{image.id}}"><h2>{{image.user}}</h2></a>  {% endcomment %}
           <a href=""><img src="{{image.image.url}}" style="height: 360px;width: 565px;" alt="Image"/></a>
-          <div>{% for comment in image.comments.all %}
+          <div>
+            {% for comment in image.comments.all %}
             <p><strong>{{comment.user}}</strong> {{comment.comments}}</p>
     {% endfor %}
     <a href="{% url 'comment' pk=image.pk %}" style="color:inherit;">add a comment here<i class="fa fa-comment-o fa-2x ml-4"></i></a>
-
 </div>
 
           {% endfor %}  
         </div>
 
-        <div style="float:right;margin-top: -800px;margin-right: 90px;">
+        <div style="float: right;margin-top: -1591px;margin-right: 116px;">
             <h3>user Stories</h3>
             {%for profile in profiles %}
             <a href="{{profile.find_profile}}">
