@@ -1,4 +1,4 @@
-{% extends "registration/base.html" %}
+{% extends 'all_temps/base.html' %}
 
 {% block content %}
   {{block.super}}
@@ -10,9 +10,7 @@
           <a href="{{profile.get_absolute_url}}">{{profile.username}}</a>
           <img src="{{profile.profile_photo.url}}" class="img-responsive card-image" alt=""></a>
         </div>
-  </div>
-   
-
+      </div>
     {% endif %}
 
     {% endfor %}
