@@ -65,6 +65,10 @@ def upload(request):
             else:
                 form = UploadForm()
             return render(request,'all_temps/upload.html',{"user":current_user,"form":form})
+        else:
+                form = UploadForm()
+            return render(request,'all_temps/upload.html',{"user":current_user,"form":form})
+
 
 # function to edit profile
 @login_required(login_url='/accounts/login/')
