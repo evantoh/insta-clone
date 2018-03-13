@@ -1,9 +1,7 @@
-{% extends 'registration/base.html' %} {% block content %}
+{% extends 'registration/base.html' %} {% block content %}{% load static %}
 <div class="container">
   <div class="row">
-
-    <div class="col- mx-auto p-5" style="background-color:#ffffff; border: 14px solid #ffffff;
-    ;margin-top:13%;">
+    <div class="col- mx-auto p-5" style="background-color:#ffffff; border: 14px solid #ffffff;;margin-top:13%;">
       <div class="profile p-4" style="white-space:nowrap">
         <img src="{{profile.profile_photo.url}}" alt="" style="height:70px;width:70px; border-radius:50%; display:inline;">
         <p class="ml-2" style="display:inline; white-space:nowrap; font-size:25px;">Hi<strong> {{profile.user}}</strong>. Welcome to Instagram</p>
@@ -15,24 +13,24 @@
           <div class="Instagram-card-header">
               <img src="{{profile.profile_photo.url}}"class="Instagram-card-user-image" style="height: 46px;width: 60px;border-radius: 25px">
               <a class="Instagram-card-user-name"  href="{% url 'singleuser' user.id%}">{{image.user}}</a>
-            </div>
+          </div>
             <div>
                 <a href="{% url 'single_photo' image.id %}"> 
                   <img src="{{image.image.url}}" style="height: 360px;width: 565px;" alt="Image"/>
                   VIEW MORE
                 </a>
-
             </div>
-            
+            <img src="{% static 'images/like.png' %}" alt="" style="height: 45px;width: 50px;">
+            <span class="badge badge-success">{{image.likes}} likes </span>
           <div>
-            {% for comment in image.comments.all %}
-              <p><strong>{{comment.user}}</strong> {{comment.comments}}</p>
-            {% endfor %}
-            {% endfor %}
-              <a href="{% url 'comment' pk=image.pk %}" style="color:inherit;">add a comment here<i class="fa fa-comment-o fa-2x ml-4"></i></a>
+              {% for comment in image.comments.all %}
+                <p><strong>{{comment.user}}</strong> {{comment.comments}}</p>
+              {% endfor %}
+              {% endfor %}
+                <a href="{% url 'comment' pk=image.pk %}" style="color:inherit;">add a comment here<i class="fa fa-comment-o fa-2x ml-4"></i></a>
           </div>
           {% endfor %} 
-          <span class="badge badge-success">{{image.likes}} likes </span> 
+           
         </div>
 
         <div style="float: right;margin-top: -1591px;margin-right: 116px;">
