@@ -64,7 +64,7 @@ def upload(request):
                     return redirect('index')
             else:
                 form = UploadForm()
-                return render(request,'all_temps/upload.html',{"user":current_user,"form":form})
+            return render(request,'all_temps/upload.html',{"user":current_user,"form":form})
 
 # function to edit profile
 @login_required(login_url='/accounts/login/')
@@ -90,23 +90,6 @@ def edit_profile(request):
 def other_insta_users(request):
     photo_desc = Profile.objects.all()
     return render(request, 'all_temps/insta_users.html',{"profiles":photo_desc})
-
-# function to edit the profile
-@login_required(login_url='/accounts/login/')
-def edit_profile(request):
-    title = 'Instagram |Edit'
-    current_user = request.user
-    if request.method == 'POST':
-        form = EditProfile(request.POST,request.FILES)
-        if form.is_valid():
-            update = form.save(commit=False)
-            update.user = current_user
-            update.profile = current_profile
-            update.save()
-            return redirect('profile')
-    else:
-        form = EditProfile()
-    return render(request, 'all_temps/edit_profile.html', {"title":title, "form":form})
 
 # function for commenting
 @login_required(login_url='/accounts/login/')

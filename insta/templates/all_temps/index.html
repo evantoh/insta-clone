@@ -24,7 +24,8 @@
             {% endfor %}
               <a href="{% url 'comment' pk=image.pk %}" style="color:inherit;">add a comment here<i class="fa fa-comment-o fa-2x ml-4"></i></a>
           </div>
-          {% endfor %}  
+          {% endfor %} 
+          <span class="badge badge-success">{{image.likes}} likes </span> 
         </div>
 
         <div style="float: right;margin-top: -1591px;margin-right: 116px;">
