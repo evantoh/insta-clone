@@ -11,15 +11,16 @@
       </div>
     </div>
       <div class="style-image" style="margin-left:14%;">
-          {% for image in latest_images %}
+          {% for image in latest_images %} {%for profile in profiles %}
           <div class="Instagram-card-header">
-              <img src="{{image.image.url}}"class="Instagram-card-user-image" style="height: 46px;width: 60px;border-radius: 25px">
+              <img src="{{profile.profile_photo.url}}"class="Instagram-card-user-image" style="height: 46px;width: 60px;border-radius: 25px">
               <a class="Instagram-card-user-name"  href="{% url 'singleuser' user.id%}">{{image.user}}</a>
             </div>
           <a href=""><img src="{{image.image.url}}" style="height: 360px;width: 565px;" alt="Image"/></a>
           <div>
             {% for comment in image.comments.all %}
               <p><strong>{{comment.user}}</strong> {{comment.comments}}</p>
+            {% endfor %}
             {% endfor %}
               <a href="{% url 'comment' pk=image.pk %}" style="color:inherit;">add a comment here<i class="fa fa-comment-o fa-2x ml-4"></i></a>
           </div>
