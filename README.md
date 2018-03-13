@@ -1,4 +1,6 @@
+#LOGIN
 ![gallery](insta1.png)
+#AFETR LOGGING IN
 ![gallery](insta2.png)
 # INSTAGRAM
 #### By **evans mwenda**
