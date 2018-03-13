@@ -1,28 +1,37 @@
-
-{%extends 'registration/base.html'%}
-
+{%extends "registration/base.html"%}
 {% block content %}
-
-<div class="container">
-
+<div class="container-fluid">
   <div class="row">
-    
-    
-   <div class="card" style="width:400px;margin-left:10%;">
-     <img class="card-img-top" src="{{user.profile_photo.url}}" alt="Card image">
-     <div class="card-body">
-       <h4 class="card-title"> USERNAME:{{user.user.username}}</h4>
-       <p class="card-text">BIO:{{user.bio}}</p>
-       <a href="#" class="btn btn-primary">Follow</a>
-     </div>
-   </div>
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-8" >
+      <div class="profile" style="margin-top:30%;">
+          {% for profile in profiles%}
+          {% if profile.user.id == user.id%}
+          <div class="container"><img class="img-circle center-block" src="{{profile.profile_photo.url}}" width="140" height="140">
+          <h1 class="text-center">{{profile.user.username}} <button class="btn btn-default btn-primary follow-button" type="button">Follow </button></h1>
+          {% endif %}
+    {% endfor %}
+        <div class="">
+            <button type="button" class=" btn btn-default btn-block" style="display:inline-block; width:200px; font-size:20px">EDIT PROFILE</button>
 
- </div>
+          <i class="fa fa-cog" aria-hidden="true" style="font-size:30px; margin-left:10px"></i>
+        </div>
+        <br>
+        <p style="font-size:20px"><span><span style="font-weight:bolder"> </span>12 Posts</span> <span style="margin-left:20px"><span style="font-weight:bolder">1000 </span> Followers</span> <span style="margin-left:20px"> <span style="font-weight:bolder">4000 </span>Following</span></p>
+      </div>
+    </div>
+    <div class="col-sm-2">
+    </div>
+  </div>
+  <div class="row">
+    <p class="text-center" style="font-size:20px">Posts</p>
+  </div>
  <div class="row">
-        <div class="col-md-4">
+        <div class="col-lg-3">
 
                 {%for img in images%} 
-                 <img class="img-fluid" src="{{img.image.url}}" style="float:right;" width="400px" alt="Card image cap">
+                 <img class="img-fluid" src="{{img.image.url}}" style="float:left;padding-left: 13px;" width="400px" alt="Card image cap">
                   <p>{{img.image_caption}}</p> 
                   <span class="badge badge-success">{{img.likes}} likes </span>
                 {%endfor%}

@@ -45,7 +45,7 @@ def search_users(request):
 def profile(request):
     current_user=request.user
     profile = Profile.objects.get()
-    return render(request, 'all_temps/profile.html', {'profiles':profile, "user":current_user})
+    return render(request, 'all_temps/user.html', {'profiles':profile, "user":current_user})
 
 # function to upload images
 @login_required(login_url='/accounts/login/')
