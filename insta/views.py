@@ -89,8 +89,6 @@ def edit_profile(request):
     return render(request, 'all_temps/edit_profile.html', {"title":title, "form":form})
     
 
-
-
 # function for user stories
 @login_required(login_url='/accounts/login/')
 def other_insta_users(request):
