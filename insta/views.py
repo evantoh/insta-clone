@@ -62,12 +62,14 @@ def upload(request):
                     upload.profile = profile
                     upload.save()
                     return redirect('index')
+                else:
+                    return HttpResponse('You dont have an account with us')
             else:
                 form = UploadForm()
             return render(request,'all_temps/upload.html',{"user":current_user,"form":form})
         else:
                 form = UploadForm()
-            return render(request,'all_temps/upload.html',{"user":current_user,"form":form})
+                return render(request,'all_temps/upload.html',{"user":current_user,"form":form})
 
 
 # function to edit profile
