@@ -28,14 +28,15 @@
     <p class="text-center" style="font-size:20px">Posts</p>
   </div>
  <div class="row">
-        <div class="col-lg-3">
-
-                {%for img in images%} 
-                 <img class="img-fluid" src="{{img.image.url}}" style="float:left;padding-left: 13px;" width="400px" alt="Card image cap">
-                  <p>{{img.image_caption}}</p> 
-                  <span class="badge badge-success">{{img.likes}} likes </span>
-                {%endfor%}
-         </div>
+    {%for img in images%}
+    <div class="col-md-4">
+        <img class="img-fluid" src="{{img.image.url}}" style="float:left;padding-left:13px;" width="400px" alt="Card image cap">
+        <p>{{img.image_caption}}</p> 
+        <span class="badge badge-success">{{img.likes}} likes </span>
+    </div> 
+    
+   {%endfor%}
+      
     </div>
  </div>
 
