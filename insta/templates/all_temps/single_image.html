@@ -2,19 +2,21 @@
 
  {% block content %}
 
- <div class="container">
+ <div class="container" style="margin-top:30%;">
 
    <div class="row">
      
-     <img src="{{photos.image.url}}"  class="img-responsive" alt="">
+     <img src="{{photos.image.url}}"  class="img-responsive" alt="" style="width: 494px;height: 373px;border-radius: 43px;margin-top: -280px;margin-left: 239px;">
+   </div>
+
+   <div class="row-image" style="    margin-left: 28%;font-family:fantasy;font-style: oblique;color: #670529;padding-top: 38px;">
+     <p>Name:{{photos.image_name}}</p>
+     <p>IMAGE CAPTION:{{photos.image_caption}}</p>
+     <p>Posted on {{photos.time_uploaded|timesince}} by{{user.usernane}} </p>
    </div>
 
    <div class="row">
-     <h1 class="text-center">{{photos.image_name}}</h1>
-   </div>
-
-   <div class="row">
-     <p>Posted {{photos.time_uploaded|timesince}} by </p>
+    
    </div>
 
  </div>
