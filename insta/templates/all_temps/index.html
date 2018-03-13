@@ -16,11 +16,11 @@
               </div>
                 <div>
                     <a href="{% url 'single_photo' image.id %}"> 
-                      <img src="{{image.image.url}}" style="height: 360px;width: 565px;" alt="Image"/>
+                      <img src="{{image.image.url}}" style="height:360px;width:565px;" alt="Image"/>
                       VIEW MORE
                     </a>
                 </div>
-                <img src="{% static 'images/like.png' %}" alt="" style="height: 45px;width: 50px;">
+                <img src="{% static 'images/like.png' %}" alt="" style="height:45px;width:50px;">
                 <span class="badge badge-success">{{image.likes}} likes </span>
               <div>
                   {% for comment in image.comments.all %}

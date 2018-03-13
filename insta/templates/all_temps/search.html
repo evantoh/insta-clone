@@ -16,9 +16,14 @@
   {% if profiles %}
     {% for profile in profiles %}
       <div class="col-sm-6 col-md-12">
-          <img src="{{profile.profile_photo.url}}"class="img-reponsive" width="300px" height="300px"><br>
-          <span class="badge badge-secondary"> <p> username: {{profile.user.username}}</p></span>
-        <h1>  Bio: {{profile.bio}}</h1>
+          <img src="{{profile.profile_photo.url}}"class="img-reponsive"  style="width: 300px;height: 300px;border-radius: 100px;"><br>
+          <div class="popo" style="margin-left: 446px;margin-top: -245px;"> 
+            <h1 style="font:30px;color: black;
+            font-family: cursive;">search Details</h1>
+            <p>username: {{profile.user.username}}</p>
+             <p>  Bio: {{profile.bio}}</p>
+          </div>
+       
       </div>
     {% endfor %}
   {% endif %}

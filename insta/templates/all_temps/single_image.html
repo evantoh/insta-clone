@@ -9,10 +9,10 @@
      <img src="{{photos.image.url}}"  class="img-responsive" alt="" style="width: 494px;height: 373px;border-radius: 43px;margin-top: -280px;margin-left: 239px;">
    </div>
 
-   <div class="row-image" style="    margin-left: 28%;font-family:fantasy;font-style: oblique;color: #670529;padding-top: 38px;">
+   <div class="row-image" style="margin-left: 28%;font-family:fantasy;font-style: oblique;color: #670529;padding-top: 38px;">
      <p>Name:{{photos.image_name}}</p>
      <p>IMAGE CAPTION:{{photos.image_caption}}</p>
-     <p>Posted on {{photos.time_uploaded|timesince}} by{{user.usernane}} </p>
+     <p>Posted on {{photos.time_uploaded|timesince}} by <strong>{{photos.user.username}}</strong> </p>
    </div>
 
    <div class="row">
