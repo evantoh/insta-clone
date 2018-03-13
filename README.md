@@ -1,5 +1,5 @@
-![gallery](insta.png)
-
+![gallery](insta1.png)
+![gallery](insta2.png)
 # INSTAGRAM
 #### By **evans mwenda**
 ## Description
