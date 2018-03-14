@@ -103,5 +103,3 @@ class Comment(models.Model):
     def get_comments(cls):
         comment=Comment.objects.all()
         return comment
-        
-

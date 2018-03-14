@@ -53,13 +53,12 @@ def upload(request):
     current_user = request.user         
     profiles = Profile.get_profile()
     for profile in profiles:
-        if profile.user.id == current_user.id:
+      
             if request.method == 'POST':
                 form = UploadForm(request.POST,request.FILES)
                 if form.is_valid():
                     upload = form.save(commit=False)
                     upload.user = current_user
-                    upload.profile = profile
                     upload.save()
                     return redirect('index')
                 else:
@@ -67,10 +66,7 @@ def upload(request):
             else:
                 form = UploadForm()
             return render(request,'all_temps/upload.html',{"user":current_user,"form":form})
-        else:
-                form = UploadForm()
-                return render(request,'all_temps/upload.html',{"user":current_user,"form":form})
-
+        
 
 # function to edit profile
 @login_required(login_url='/accounts/login/')
@@ -125,4 +121,4 @@ def user(request,user_id):
     except Image.DoesNotExist:
         raise Http404()
 
-    return render(request,"all_temps/user.html",{"user":user,"images":images})        
+    return render(request,"all_temps/user.html",{"user":user,"images":images})   
