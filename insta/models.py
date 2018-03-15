@@ -97,7 +97,7 @@ class Comment(models.Model):
         return self.delete()
 
     def __str__(self):
-        return self.text
+        return self.comments
 
     @classmethod
     def get_comments(cls):

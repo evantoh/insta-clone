@@ -1,10 +1,10 @@
 {% extends 'all_temps/base.html' %} {% block content %}{% load static %}
 <div class="container">
   <div class="row">
-    <div class="col- mx-auto p-5" style="background-color:#ffffff; border: 14px solid #ffffff;;margin-top:7PY%;">
-      <div class="profile p-4" style="white-space:nowrap">
+    <div class="col- mx-auto p-5" style="background-color:#ffffff; border: 14px solid #ffffff;;margin-top:7%;">
+       <div class="profile p-4" style="white-space:nowrap">
         <img src="{{profile.profile_photo.url}}" alt="" style="height:70px;width:70px; border-radius:50%; display:inline;">
-      </div>
+      </div> 
     </div>
       <div class="style-image" style="margin-left:14%;">
             {% for image in latest_images %} {%for profile in profiles %}
